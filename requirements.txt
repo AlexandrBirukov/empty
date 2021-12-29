@@ -1,0 +1,9 @@
+Django==4.0
+django-cleanup==5.2.0
+django-compressor==3.1
+django-debug-toolbar==3.2.4
+django-environ==0.8.1
+django-solo==2.0.0
+Fabric3==1.14.post1
+gunicorn==20.1.0
+psycopg2-binary==2.9.2

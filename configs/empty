@@ -1,0 +1,26 @@
+server {
+    listen 80;
+	server_name domain_name;
+    access_log  /home/admin/logs/project.log;
+    client_max_body_size 32m;
+
+    location / {
+        proxy_pass http://127.0.0.1:8001;
+        proxy_set_header Host $server_name;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /static/ {
+        alias /home/admin/empty/static/;
+        expires 30d;
+    }
+
+    location /media/ {
+        alias /home/admin/empty/media/;
+    }
+
+    gzip on;
+    gzip_disable "msie6";
+    gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript image/svg+xml svg svgz;
+}
